@@ -1,5 +1,4 @@
 import mysql.connector
-from mysql.connector import errorcode
 
 # Database configuration
 DB_HOST = "localhost"
@@ -19,17 +18,12 @@ try:
     cursor = connection.cursor()
     
     # Create the database if it doesn't exist
-    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
     
     print(f"Database '{DB_NAME}' created successfully!")
     
 except mysql.connector.Error as err:
-    # Handle specific error for access denied
-    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-        print("Error: Access denied - Incorrect username or password")
-    # Handle other errors
-    else:
-        print(f"Error: {err.msg}")
+    print(f"Error: {err.msg}")
     
 finally:
     # Close cursor and connection if they exist
