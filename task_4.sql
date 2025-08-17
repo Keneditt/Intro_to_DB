@@ -1,2 +1,2 @@
--- Print full description of Books table
-SHOW CREATE TABLE Books;
+-- Print full description of books table
+SHOW COLUMNS FROM books;
